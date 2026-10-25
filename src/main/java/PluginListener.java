@@ -175,7 +175,6 @@ public abstract class PluginListener {
      * @see #onBlockPlace(Player, Block, Block, Item)
      * @see #onItemUse(Player, Item)
      */
-    @Deprecated
     public boolean onBlockCreate(Player player, Block blockPlaced, Block blockClicked, int itemInHand) {
         return false;
     }

@@ -250,11 +250,11 @@ public class PluginLoader {
     
     private static final Logger log = Logger.getLogger("Minecraft");
     private static final Object lock = new Object();
-    private List<Plugin> plugins = new ArrayList<Plugin>();
-    private List<List<PluginRegisteredListener>> listeners = new ArrayList<List<PluginRegisteredListener>>();
-    private HashMap<String, PluginInterface> customListeners = new HashMap<String, PluginInterface>();
-    private Server server;
-    private PropertiesFile properties;
+    private final List<Plugin> plugins = new ArrayList<>();
+    private final List<List<PluginRegisteredListener>> listeners = new ArrayList<>();
+    private final HashMap<String, PluginInterface> customListeners = new HashMap<>();
+    private final Server server;
+    private final PropertiesFile properties;
 
     /**
      * Creates a plugin loader
@@ -275,7 +275,7 @@ public class PluginLoader {
     public void loadPlugins() {
         String[] classes = properties.getString("plugins", "").split(",");
         for (String sclass : classes) {
-            if (sclass.equals("")) {
+            if (sclass.isEmpty()) {
                 continue;
             }
             loadPlugin(sclass.trim());
@@ -639,6 +639,7 @@ public class PluginLoader {
                                 break;
                         }
                     } catch (UnsupportedOperationException ex) {
+                        System.out.print(ex.getMessage());
                     }
                 }
             } catch (Exception ex) {
