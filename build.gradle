@@ -15,6 +15,10 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(8)
+}
+
 test {
     useJUnitPlatform()
 }
@@ -44,7 +48,7 @@ PluginRegisteredListener.class PropertiesFile.class Server.class Sign.class Stor
     from {
         sourceSets.main.collect {
             it.getAllJava().collect {
-                System.out.println("source:"+it.getPath());
+                println "source:"+it.getPath()
                 return it
             }
         }
