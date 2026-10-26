@@ -31,12 +31,12 @@ public class etc {
     private String[] itemSpawnBlacklist = null;
     private String[] motd = null;
     private boolean saveHomes = true;
-    private boolean firstLoad = true;
+    private final boolean firstLoad = true;
     private boolean whitelistEnabled = false;
     private int playerLimit = 20;
     private int spawnProtectionSize = 16;
-    private static LinkedHashMap<String, String> commands = new LinkedHashMap<String, String>();
-    private static ArrayList<String> disallowedCommands = new ArrayList<>();
+    private final static LinkedHashMap<String, String> commands = new LinkedHashMap<>();
+    private final static ArrayList<String> disallowedCommands = new ArrayList<>();
     private String dataSourceType;
     private DataSource dataSource;
     private PropertiesFile properties;
@@ -201,7 +201,7 @@ public class etc {
     /**
      * Returns the instance
      *
-     * @return
+     * @return this
      */
     public static etc getInstance() {
         if (instance == null) {
@@ -223,7 +223,7 @@ public class etc {
     /**
      * Returns the minecraft server
      *
-     * @return
+     * @return MinecraftServer
      */
     public static MinecraftServer getMCServer() {
         return server;
@@ -232,7 +232,7 @@ public class etc {
     /**
      * Returns the data source
      *
-     * @return
+     * @return DataSource
      */
     public static DataSource getDataSource() {
         return etc.getInstance().getSource();
@@ -241,7 +241,7 @@ public class etc {
     /**
      * Returns the minecraft server interface
      *
-     * @return
+     * @return Server
      */
     public static Server getServer() {
         return etc.getLoader().getServer();
@@ -250,7 +250,7 @@ public class etc {
     /**
      * Returns the plugin loader
      *
-     * @return
+     * @return PluginLoader
      */
     public static PluginLoader getLoader() {
         if (instance.loader == null) {
@@ -304,7 +304,7 @@ public class etc {
      * Returns true if the item is on the blacklist
      *
      * @param id
-     * @return
+     * @return boolean
      */
     public boolean isOnItemBlacklist(int id) {
         for (String str : itemSpawnBlacklist) {
@@ -548,7 +548,8 @@ public class etc {
                 log.info("THIS IS AN UNOFFICIAL BUILD OF HMOD");
                 log.info("Build information: " + versionStr);
             } else {
-                log.info("Hey0 Server Mod Build " + version);
+                log.info("hey0 Server Mod Build " + version);
+                log.info("Minecraft version: alpha 1.2.5");
             }
         } else {
             dontParseRegular = false;
