@@ -1,3 +1,5 @@
+import java.util.logging.Logger;
+
 /**
  * Plugin.java - Extend this to create your own plugins.
  * 
@@ -18,6 +20,13 @@ public abstract class Plugin {
      * Disables the plugin
      */
     public abstract void disable();
+
+    /**
+     * Plugin get logger
+     */
+    public Logger getLogger() {
+        return Logger.getLogger("Minecraft");
+    }
 
     /**
      * Returns true if this plugin is enabled
