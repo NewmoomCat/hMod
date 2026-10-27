@@ -1,8 +1,10 @@
-import com.sun.org.glassfish.gmbal.Description;
-
 import java.util.logging.Logger;
 
-@Description("不稳定")
+/**
+ * 此方法不稳定
+ *
+ * @author XinYue Meko
+ */
 public class log {
     private final Logger l = Logger.getLogger("Minecraft");
 
