@@ -1,5 +1,5 @@
 public class ChatColor {
-    public static final char COLOR_CHAR = '\u00A7';
+    public static final String COLOR_CHAR = "\u00A7";
 
     public static final String BLACK = "§0";
     public static final String DARK_BLUE = "§1";
@@ -17,7 +17,7 @@ public class ChatColor {
     public static final String LIGHT_PURPLE = "§d";
     public static final String YELLOW = "§e";
     public static final String WHITE = "§f";
-    public static final String RESET = String.valueOf(COLOR_CHAR) + 'r';
+    public static final String RESET = COLOR_CHAR + "r";
 
     public static String clean(String message) {
         return message.replaceAll("(?i)\u00a7[0-9a-fr]", "");

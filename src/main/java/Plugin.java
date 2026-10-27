@@ -10,6 +10,7 @@ public abstract class Plugin {
     private String name = "";
     private boolean enabled = true;
     private boolean usesListeners;
+    private log ll;
 
     /**
      * Enables the plugin
@@ -24,8 +25,8 @@ public abstract class Plugin {
     /**
      * Plugin get logger
      */
-    public Logger getLogger() {
-        return Logger.getLogger("Minecraft");
+    public log getLogger() {
+        return ll;
     }
 
     /**
