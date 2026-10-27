@@ -1,8 +1,10 @@
+import com.sun.org.glassfish.gmbal.Description;
+
 import java.util.logging.Logger;
 
-/* PluginLogger */
+@Description("不稳定")
 public class log {
-    public final Logger l = Logger.getLogger("Minecraft");
+    private final Logger l = Logger.getLogger("Minecraft");
 
     public void info(String message) {
         l.info(ChatColor.toANSI(message + ChatColor.RESET));
