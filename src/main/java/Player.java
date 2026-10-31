@@ -95,13 +95,13 @@ public class Player extends LivingEntity {
                 sendMessage(ChatColor.RED + "You are currently muted.");
                 return;
             }
-            if ((Boolean) etc.getLoader().callHook(PluginLoader.Hook.CHAT, new Object[]{player, message})) {
+            if ((Boolean) hIndex.getLoader().callHook(PluginLoader.Hook.CHAT, new Object[]{player, message})) {
                 return;
             }
 
             String chat = "<" + getColor() + getName() + ChatColor.WHITE + "> " + message;
             log.log(Level.INFO, "<" + getName() + "> " + message);
-            etc.getServer().messageAll(chat);
+            hIndex.getServer().messageAll(chat);
         }
     }
 
@@ -113,16 +113,16 @@ public class Player extends LivingEntity {
      */
     public void command(String command) {
         try {
-            if (etc.getInstance().isLogging()) {
+            if (hIndex.getInstance().isLogging()) {
                 log.info("Command used by " + getName() + " " + command);
             }
             String[] split = command.split(" ");
             String command_start = split[0].toLowerCase();
-            if ((Boolean) etc.getLoader().callHook(PluginLoader.Hook.COMMAND, new Object[]{player, split})) {
+            if ((Boolean) hIndex.getLoader().callHook(PluginLoader.Hook.COMMAND, new Object[]{player, split})) {
                 return; // No need to go on, commands were parsed.
             }
             if (!canUseCommand(command_start) && !command_start.startsWith("/#")) {
-                if (etc.getInstance().showUnknownCommand()) {
+                if (hIndex.getInstance().showUnknownCommand()) {
                     sendMessage(ChatColor.RED + "Unknown command.");
                 }
                 return;
@@ -136,12 +136,12 @@ public class Player extends LivingEntity {
 
             case "/help":
                 List<String> availableCommands = new ArrayList<String>();
-                for (Entry<String, String> entry : etc.getCommands().entrySet()) {
+                for (Entry<String, String> entry : hIndex.getCommands().entrySet()) {
                     if (canUseCommand(entry.getKey())) {
-                        if (entry.getKey().equals("/kit") && !etc.getDataSource().hasKits()) {
+                        if (entry.getKey().equals("/kit") && !hIndex.getDataSource().hasKits()) {
                             continue;
                         }
-                        if (entry.getKey().equals("/listwarps") && !etc.getDataSource().hasWarps()) {
+                        if (entry.getKey().equals("/listwarps") && !hIndex.getDataSource().hasWarps()) {
                             continue;
                         }
 
@@ -178,9 +178,9 @@ public class Player extends LivingEntity {
                 break;
 
             case "/reload":
-                etc.getInstance().load();
-                etc.getInstance().loadData();
-                for (Player player_entry : etc.getServer().getPlayerList()) {
+                hIndex.getInstance().load();
+                hIndex.getInstance().loadData();
+                for (Player player_entry : hIndex.getServer().getPlayerList()) {
                     player_entry.getUser().reloadPlayer();
                 }
                 log.info("Reloaded config");
@@ -220,7 +220,7 @@ public class Player extends LivingEntity {
                         String value = split[i].split(":")[1];
                         boolean newUser = false;
 
-                        if (!etc.getDataSource().doesPlayerExist(player.getName())) {
+                        if (!hIndex.getDataSource().doesPlayerExist(player.getName())) {
                             if (!key.equalsIgnoreCase("groups") && !key.equalsIgnoreCase("g")) {
                                 sendMessage(ChatColor.RED + "When adding a new user, set their group(s) first.");
                                 return;

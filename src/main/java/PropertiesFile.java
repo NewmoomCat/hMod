@@ -21,10 +21,10 @@ import java.util.Map;
 public final class PropertiesFile {
 
     private static final Logger log = Logger.getLogger("Minecraft");
-    private String fileName;
+    private final String fileName;
     // Data
-    private List<String> lines = new ArrayList<String>();
-    private Map<String, String> props = new HashMap<String, String>();
+    private final List<String> lines = new ArrayList<>();
+    private final Map<String, String> props = new HashMap<>();
 
     /**
      * Creates or opens a properties file using specified filename
@@ -222,7 +222,7 @@ public final class PropertiesFile {
         PrintStream ps = new PrintStream(os);
 
         // Keep track of properties that were set
-        List<String> usedProps = new ArrayList<String>();
+        List<String> usedProps = new ArrayList<>();
 
         for (String line : this.lines) {
             if (line.trim().length() == 0) {
@@ -277,7 +277,7 @@ public final class PropertiesFile {
      * @throws Exception
      */
     public Map<String, String> returnMap() throws Exception {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         BufferedReader reader = new BufferedReader(new FileReader(this.fileName));
         String line;
         while ((line = reader.readLine()) != null) {
