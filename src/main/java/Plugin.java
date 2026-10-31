@@ -10,7 +10,7 @@ public abstract class Plugin {
     private String name = "";
     private boolean enabled = true;
     private boolean usesListeners;
-    private log ll;
+    private Server server;
 
     /**
      * Enables the plugin
@@ -23,10 +23,17 @@ public abstract class Plugin {
     public abstract void disable();
 
     /**
-     * Plugin get logger
+     * Get Server
      */
-    public log getLogger() {
-        return ll;
+    public Server getServer() {
+        return server;
+    }
+
+    /**
+     * getPluginLogger
+     */
+    public Logger getLogger() {
+        return server.getLogger();
     }
 
     /**

@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
 import net.minecraft.server.MinecraftServer;
 
 /**
@@ -281,6 +283,13 @@ public class Server {
             }
         }
         return toRet;
+    }
+
+    /**
+     * Plugin get logger
+     */
+    public Logger getLogger() {
+        return Logger.getLogger("Minecraft");
     }
 
     /**

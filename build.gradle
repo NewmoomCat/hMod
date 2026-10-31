@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'eu.thescrewcollab'
+group 'net.hey0'
 version '130'
 
 repositories {
